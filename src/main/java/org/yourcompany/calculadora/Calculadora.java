@@ -56,9 +56,9 @@ public class Calculadora {
             System.out.println("Suma dels quadrats dels primers 7 números: " + sumaQuadrats(7));
 
             // Exemples de crida per al mètode calcularPotencia
-            // System.out.println("2 elevat a la potència 3: " + calcularPotencia(2, 3));
-            // System.out.println("5 elevat a la potència 4: " + calcularPotencia(5, 4));
-            // System.out.println("3 elevat a la potència 5: " + calcularPotencia(3, 5));
+            System.out.println("2 elevat a la potència 3: " + calcularPotencia(2, 3));
+            System.out.println("5 elevat a la potència 4: " + calcularPotencia(5, 4));
+            System.out.println("3 elevat a la potència 5: " + calcularPotencia(3, 5));
 
         
         }
@@ -178,6 +178,36 @@ public class Calculadora {
         }
         return quat;
     }
+
+    public static int calcularPotencia(int base, int exponent) {
+
+        int b1 = exponent;
+        int b2 = base;
+        int b3 = base;
+        int b4 = base;
+
+        //Logica x^z = ((x+x+x+... x veces)+(x+x+x+... x veces)+(x+x+x+... x veces)... x veces)
+        //i el (((x+x+... x veces) +... x veces) +... x veces) son z veces
+
+        //Ejemplo 5^3 = ((5+5+5... 5 veces)+(5+5+5... 5 veces)+(5+5+5... 5 veces)... 5 veces)
+        // ((5+5+5+5+5)+(5+5+5+5+5)+(5+5+5+5+5)+(5+5+5+5+5)+(5+5+5+5+5)) = 125
+         
+        //Bucle para (((x+x+... x veces) +... x veces) +... x veces) son z veces
+        while (b1 > 1) {
+            //Bucle para ((x+x+x+... x veces)+(x+x+x+... x veces)+(x+x+x+... x veces)... x veces)
+            while (b4 > 1) { 
+                b2 = b2 + b3;
+                b4--;
+            }
+            b3 = b2;
+            b4 = base;
+
+            b1--;
+        }
+
+        return b2;
+    }
+
     /**
      * Calcula el nombre de dígits d’un número enter.
      * Funciona tant per a nombres positius com negatius.
