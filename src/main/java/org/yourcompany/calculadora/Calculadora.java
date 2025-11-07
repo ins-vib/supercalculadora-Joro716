@@ -14,53 +14,101 @@ public class Calculadora {
     public static void main(String[] args) {
         
         try(Scanner teclat = new Scanner(System.in)){
+            
+            int opcio = mostrarMenuConsola();
 
-            // Exemples de crida per al mètode nombreDigits
-            System.out.println("Nombre de dígits de 1234: " + nombreDigits(1234));
-            System.out.println("Nombre de dígits de 56789: " + nombreDigits(56789));
-            System.out.println("Nombre de dígits de -101010: " + nombreDigits(-101010));
-            System.out.println("Nombre de dígits de 0: " + nombreDigits(0));
+            if(opcio == 1){
 
-            //Moneda caracreu
-            int cara = MonedaCara(50);
-            int creu = 50 - cara;
-            System.out.println("50 monedes tirades");
-            System.out.println("Caras: " + cara);
-            System.out.println("Creus: " + creu);
+                //crida per al mètode sumaPrimersNumeros
+                System.out.println("Introdueix un nombre enter: ");
+                int nombre = teclat.nextInt();
+                System.out.println("Suma dels primers 5 números: " + sumaPrimersNumeros(nombre));
+                
+            }else  if(opcio == 2){
+
+                //crida per al mètode calcularFactorial
+                System.out.println("Introdueix un nombre enter: ");
+                int nombre = teclat.nextInt();
+                System.out.println("Factorial de " + nombre + ": " + calcularFactorial(nombre));
+            }else if(opcio == 3){
+
+                //crida per al mètode sumaQuadrats
+                System.out.println("Introdueix un nombre enter:");
+                int nombre = teclat.nextInt();
+                System.out.println("Suma dels quadrats dels primers 3 números: " + sumaQuadrats(nombre));
+
+            }else if(opcio == 4){
+
+                //crida per al mètode calcularPotencia
+                System.out.println("Introdueix una base enter:");
+                int base = teclat.nextInt();
+                System.out.println("Introdueix un exponent enter:");
+                int exponent = teclat.nextInt();
+                System.out.println("2 elevat a la potència 3: " + calcularPotencia(base, exponent));
+
+            }else if(opcio == 5){
+
+                // Crida per al mètode nombreDigits
+                System.out.println("Introdueix un nombre enter: ");
+                int nombre = teclat.nextInt();
+                System.out.println("Nombre de dígits de " + nombre + ": " + nombreDigits(nombre));
+
+            }else if(opcio == 0){
+                System.out.println("Adéu!");
+            }
+            //int cara = MonedaCara(50);
+            //int creu = 50 - cara;
+            //System.out.println("50 monedes tirades");
+            //System.out.println("Caras: " + cara);
+            //System.out.println("Creus: " + creu);
 
             //Funció preu Entrada cinema
 
-            System.out.println("Es dia laborable (L) o de cap de setmana (C)?" );
-            char dia = teclat.next().charAt(0);
-            boolean dial = (dia == 'L' || dia == 'l');
+            //System.out.println("Es dia laborable (L) o de cap de setmana (C)?" );
+            //char dia = teclat.next().charAt(0);
+            //boolean dial = (dia == 'L' || dia == 'l');
 
-            System.out.println("Tens el Carnet Jove? S/N" );
-            char jove = teclat.next().charAt(0);
-            boolean Cjove = (jove == 'S' || jove == 's');
+            //System.out.println("Tens el Carnet Jove? S/N" );
+            //char jove = teclat.next().charAt(0);
+            //boolean Cjove = (jove == 'S' || jove == 's');
 
-            System.out.println("El preu de la entrada es: " + Cinema(5, Cjove, dial) + "€");
+            //System.out.println("El preu de la entrada es: " + Cinema(5, Cjove, dial) + "€");
 
             // Exemples de crida per al mètode sumaPrimersNumeros
-            System.out.println("Suma dels primers 5 números: " + sumaPrimersNumeros(5));
-            System.out.println("Suma dels primers 10 números: " + sumaPrimersNumeros(10));
-            System.out.println("Suma dels primers 15 números: " + sumaPrimersNumeros(15));
+            //System.out.println("Suma dels primers 5 números: " + sumaPrimersNumeros(5));
+            //System.out.println("Suma dels primers 10 números: " + sumaPrimersNumeros(10));
+            //System.out.println("Suma dels primers 15 números: " + sumaPrimersNumeros(15));
 
             // Exemples de crida per al mètode calcularFactorial
-            System.out.println("Factorial de 5: " + calcularFactorial(5));
-            System.out.println("Factorial de 7: " + calcularFactorial(7));
-            System.out.println("Factorial de 10: " + calcularFactorial(10));
+            //System.out.println("Factorial de 5: " + calcularFactorial(5));
+            //System.out.println("Factorial de 7: " + calcularFactorial(7));
+            //System.out.println("Factorial de 10: " + calcularFactorial(10));
 
             // Exemples de crida per al mètode sumaQuadrats
-            System.out.println("Suma dels quadrats dels primers 3 números: " + sumaQuadrats(3));
-            System.out.println("Suma dels quadrats dels primers 5 números: " + sumaQuadrats(5));
-            System.out.println("Suma dels quadrats dels primers 7 números: " + sumaQuadrats(7));
+            //System.out.println("Suma dels quadrats dels primers 3 números: " + sumaQuadrats(3));
+            //System.out.println("Suma dels quadrats dels primers 5 números: " + sumaQuadrats(5));
+            //System.out.println("Suma dels quadrats dels primers 7 números: " + sumaQuadrats(7));
 
             // Exemples de crida per al mètode calcularPotencia
-            System.out.println("2 elevat a la potència 3: " + calcularPotencia(2, 3));
-            System.out.println("5 elevat a la potència 4: " + calcularPotencia(5, 4));
-            System.out.println("3 elevat a la potència 5: " + calcularPotencia(3, 5));
+            //System.out.println("2 elevat a la potència 3: " + calcularPotencia(2, 3));
+            //System.out.println("5 elevat a la potència 4: " + calcularPotencia(5, 4));
+            //System.out.println("3 elevat a la potència 5: " + calcularPotencia(3, 5));
 
         
+        }
+    }
+
+    public static int mostrarMenuConsola(){
+        try(Scanner teclat = new Scanner(System.in);){
+            int opcio;
+            System.out.println("1 - Suma dels primers n números");
+            System.out.println("2 - Factorial d'un nombre");
+            System.out.println("3 - Suma dels quadrats dels primers n números");
+            System.out.println("4 - Potència d'un nombre");
+            System.out.println("5 - Nombre de dígits d'un nombre");
+            System.out.println("0 - Sortir");
+            opcio = teclat.nextInt();
+            return opcio;
         }
     }
 
