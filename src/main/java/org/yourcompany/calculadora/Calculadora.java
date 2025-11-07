@@ -99,17 +99,16 @@ public class Calculadora {
     }
 
     public static int mostrarMenuConsola(){
-        try(Scanner teclat = new Scanner(System.in);){
-            int opcio;
-            System.out.println("1 - Suma dels primers n números");
-            System.out.println("2 - Factorial d'un nombre");
-            System.out.println("3 - Suma dels quadrats dels primers n números");
-            System.out.println("4 - Potència d'un nombre");
-            System.out.println("5 - Nombre de dígits d'un nombre");
-            System.out.println("0 - Sortir");
-            opcio = teclat.nextInt();
-            return opcio;
-        }
+        Scanner teclat = new Scanner(System.in);
+        int opcio;
+        System.out.println("1 - Suma dels primers n números");
+        System.out.println("2 - Factorial d'un nombre");
+        System.out.println("3 - Suma dels quadrats dels primers n números");
+        System.out.println("4 - Potència d'un nombre");
+        System.out.println("5 - Nombre de dígits d'un nombre");
+        System.out.println("0 - Sortir");
+        opcio = teclat.nextInt();
+        return opcio;
     }
 
     public static int MonedaCara(int rep) {
