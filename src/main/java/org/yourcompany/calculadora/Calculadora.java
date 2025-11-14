@@ -1,6 +1,6 @@
 package org.yourcompany.calculadora;
 
-import java.util.Random;
+//import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -10,7 +10,15 @@ import java.util.Scanner;
 
 
 public class Calculadora {
-
+    /**
+     * Punt d'entrada principal de l'aplicació "Supercalculadora".
+     * <p>
+     * Aquest mètode imprimeix un títol de benvinguda a la consola
+     * i després crida a {@code mostrarMenuConsola()} per iniciar
+     * el bucle interactiu amb l'usuari.
+     *
+     * @param args Arguments de la línia de comandes (no s'utilitzen).
+     */
     public static void main(String[] args) {
         System.out.println("");
         System.out.println("Supercalculadora");
@@ -64,7 +72,14 @@ public class Calculadora {
         
         //}
     }
-
+    /**
+     * Mostra un menú interactiu per consola per executar les diferents funcions
+     * de càlcul (suma, factorial, potència, etc.).
+     * <p>
+     * L'usuari pot escollir una opció (1-5) per realitzar un càlcul o 0
+     * per sortir del programa. El menú es repetirà fins que l'usuari
+     * decideixi sortir.
+     */
     public static void mostrarMenuConsola(){
         try(Scanner teclat = new Scanner(System.in)){
             int opcio;
@@ -130,7 +145,7 @@ public class Calculadora {
             }
         }
     }
-
+/*
     public static int MonedaCara(int rep) {
         Random Aleatori = new Random();
         
@@ -217,35 +232,77 @@ public class Calculadora {
         //}
         //return 0;
     }
-
+ */
+    /**
+     * Calcula la suma dels primers 'n' nombres enters positius (suma gaussiana).
+     * Per exemple, si n=4, calcula 4 + 3 + 2 + 1 = 10.
+     * Si n és 0, la suma és 0.
+     *
+     * @param n El nombre enter positiu fins al qual es vol sumar.
+     * @return La suma total (1 + 2 + ... + n).
+     */
     public static int sumaPrimersNumeros(int n) {
         int suma = 0;
-        while (n != 0) {
+        while (n != 0 && n > 0) {
             suma = suma + n;
             n--;
         }
         return suma;
     }
 
-
+    /**
+     * Calcula el factorial d'un nombre enter 'n' (n!).
+     * El factorial és el producte de tots els enters positius des d'1 fins a 'n'.
+     * Per exemple, si n=4, calcula 4 * 3 * 2 * 1 = 24.
+     * Per definició, el factorial de 0 (0!) és 1, la qual cosa aquest mètode gestiona correctament.
+     *
+     * @param n El nombre enter (no negatiu) del qual es vol calcular el factorial.
+     * @return El factorial de {@code n}.
+     */
     public static int calcularFactorial(int n) {
         int fact = 1;
-        while (n != 0) {
+        while (n != 0 && n > 0) {
             fact = fact * n;
             n--;
         }
         return fact;
     }
-
+    /**
+     * Calcula la suma dels quadrats dels primers 'n' nombres enters positius.
+     * Per exemple, si n=3, calcula 3*3 + 2*2 + 1*1 = 9 + 4 + 1 = 14.
+     * Si n és 0, la suma és 0.
+     * ATENCIÓ: El mètode no està preparat per a nombres negatius (causaria un bucle infinit).
+     *
+     * @param n El nombre enter positiu fins al qual es vol sumar els quadrats.
+     * @return La suma total (1^2 + 2^2 + ... + n^2).
+     */
     public static int sumaQuadrats(int n) {
         int quat = 0;
-        while (n != 0) {
+        while (n != 0 && n > 0) {
             quat = quat + (n * n);
             n--;
         }
         return quat;
     }
-
+    /**
+     * Calcula la potència (base elevada a l'exponent) utilitzant únicament sumes.
+     * <p>
+     * Aquest mètode implementa la multiplicació (necessària per a la potència)
+     * com una sèrie de sumes repetides (bucle intern), i després implementa
+     * la potència com una sèrie d'aquestes multiplicacions (bucle extern).
+     * <p>
+     * <b>ATENCIÓ:</b> Aquesta implementació té limitacions significatives:
+     * <ul>
+     * <li>Només funciona per a <b>exponents enters majors o iguals a 1</b>.
+     * <li>No gestiona correctament el cas <b>exponent = 0</b> (hauria de retornar 1, però retorna la base).
+     * <li>No funciona amb <b>bases negatives</b>.
+     * <li>No funciona amb <b>exponents negatius</b>.
+     * </ul>
+     *
+     * @param base     La base de la potència (ha de ser positiva).
+     * @param exponent L'exponent de la potència (ha de ser >= 1).
+     * @return El resultat de (base ^ exponent).
+     */
     public static int calcularPotencia(int base, int exponent) {
 
         int b1 = exponent;
