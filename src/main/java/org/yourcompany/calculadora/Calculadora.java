@@ -309,27 +309,32 @@ public class Calculadora {
         int b2 = base;
         int b3 = base;
         int b4 = base;
+        
+        // Retornar 1 quan l'exponent és 0
+        if (exponent == 0) {
+            return 1;
+        }else{
+            //Logica x^z = ((x+x+x+... x veces)+(x+x+x+... x veces)+(x+x+x+... x veces)... x veces)
+            //i el (((x+x+... x veces) +... x veces) +... x veces) son z veces
 
-        //Logica x^z = ((x+x+x+... x veces)+(x+x+x+... x veces)+(x+x+x+... x veces)... x veces)
-        //i el (((x+x+... x veces) +... x veces) +... x veces) son z veces
+            //Ejemplo 5^3 = ((5+5+5... 5 veces)+(5+5+5... 5 veces)+(5+5+5... 5 veces)... 5 veces)
+            // ((5+5+5+5+5)+(5+5+5+5+5)+(5+5+5+5+5)+(5+5+5+5+5)+(5+5+5+5+5)) = 125
+            
+            //Bucle para (((x+x+... x veces) +... x veces) +... x veces) son z veces
+            while (b1 > 1) {
+                //Bucle para ((x+x+x+... x veces)+(x+x+x+... x veces)+(x+x+x+... x veces)... x veces)
+                while (b4 > 1) { 
+                    b2 = b2 + b3;
+                    b4--;
+                }
+                b3 = b2;
+                b4 = base;
 
-        //Ejemplo 5^3 = ((5+5+5... 5 veces)+(5+5+5... 5 veces)+(5+5+5... 5 veces)... 5 veces)
-        // ((5+5+5+5+5)+(5+5+5+5+5)+(5+5+5+5+5)+(5+5+5+5+5)+(5+5+5+5+5)) = 125
-         
-        //Bucle para (((x+x+... x veces) +... x veces) +... x veces) son z veces
-        while (b1 > 1) {
-            //Bucle para ((x+x+x+... x veces)+(x+x+x+... x veces)+(x+x+x+... x veces)... x veces)
-            while (b4 > 1) { 
-                b2 = b2 + b3;
-                b4--;
+                b1--;
             }
-            b3 = b2;
-            b4 = base;
 
-            b1--;
+            return b2;
         }
-
-        return b2;
     }
 
     /**
