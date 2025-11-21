@@ -284,6 +284,7 @@ public class Calculadora {
         }
         return quat;
     }
+    
     /**
      * Calcula la potència (base elevada a l'exponent) utilitzant únicament sumes.
      * <p>
@@ -291,29 +292,49 @@ public class Calculadora {
      * com una sèrie de sumes repetides (bucle intern), i després implementa
      * la potència com una sèrie d'aquestes multiplicacions (bucle extern).
      * <p>
-     * <b>ATENCIÓ:</b> Aquesta implementació té limitacions significatives:
+     * <b>FUNCIONALITATS:</b>
      * <ul>
-     * <li>Només funciona per a <b>exponents enters majors o iguals a 1</b>.
-     * <li>No gestiona correctament el cas <b>exponent = 0</b> (hauria de retornar 1, però retorna la base).
-     * <li>No funciona amb <b>bases negatives</b>.
-     * <li>No funciona amb <b>exponents negatius</b>.
+     * <li>Gestiona correctament l'<b>exponent = 0</b> (retorna 1).
+     * <li>Gestiona correctament <b>bases negatives</b> (aplica la llei dels signes).
+     * </ul>
+     * <p>
+     * <b>LIMITACIONS:</b>
+     * <ul>
+     * <li>No funciona amb <b>exponents negatius</b> (el mètode retorna un <code>int</code>,
+     * però una potència negativa donaria un resultat decimal).
      * </ul>
      *
-     * @param base     La base de la potència (ha de ser positiva).
-     * @param exponent L'exponent de la potència (ha de ser >= 1).
-     * @return El resultat de (base ^ exponent).
+     * @param base     La base de la potència (pot ser positiva o negativa).
+     * @param exponent L'exponent de la potència (ha de ser >= 0).
+     * @return El resultat enter de (base ^ exponent).
      */
     public static int calcularPotencia(int base, int exponent) {
 
-        int b1 = exponent;
-        int b2 = base;
-        int b3 = base;
-        int b4 = base;
+        int b1;
+        int b2;
+        int b3;
+        int b4;
+        boolean impar = false;
+        int b5;
         
         // Retornar 1 quan l'exponent és 0
         if (exponent == 0) {
             return 1;
         }else{
+            if (base < 0) {
+
+                b5 = exponent % 2;
+                if (b5 != 0) {
+                    impar = true; // La base original era negativa i l'exponent és imparell
+                }
+                
+                base = -base; // Convertir la base a positiva
+            }
+
+            b1 = exponent;
+            b2 = base;
+            b3 = base;
+            b4 = base;
             //Logica x^z = ((x+x+x+... x veces)+(x+x+x+... x veces)+(x+x+x+... x veces)... x veces)
             //i el (((x+x+... x veces) +... x veces) +... x veces) son z veces
 
@@ -331,6 +352,10 @@ public class Calculadora {
                 b4 = base;
 
                 b1--;
+            }
+
+            if (impar == true) {
+                b2 = -b2; // Convertir el resultat a negatiu si la base original era negativa i l'exponent és imparell
             }
 
             return b2;

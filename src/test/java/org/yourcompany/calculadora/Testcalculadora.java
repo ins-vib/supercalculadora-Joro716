@@ -33,6 +33,8 @@ public class Testcalculadora {
         assertEquals(27, Calculadora.calcularPotencia(3, 3));
         assertEquals(16, Calculadora.calcularPotencia(4, 2));
         assertEquals(1, Calculadora.calcularPotencia(5, 0));
+        assertEquals(9, Calculadora.calcularPotencia(-3, 2));
+        assertEquals(-27, Calculadora.calcularPotencia(-3, 3));
     }
 
     @Test
