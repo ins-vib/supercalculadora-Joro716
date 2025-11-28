@@ -1,7 +1,8 @@
-# --- Fitxers compilats ---
-*.class
+# --- Arxius del Sistema Operatiu (Escombraries) ---
+.DS_Store
+Thumbs.db
+desktop.ini
 
-# --- Carpetes de compilació de Maven ---
-target/
-
-doc/
+# --- Logs i fitxers temporals ---
+*.log
+*.tmp
